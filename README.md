@@ -141,7 +141,7 @@ Sample results (X-ray images and predictions) are saved in the `results/` folder
 
 ## Optimizing TensorFlow Models with OpenVINO
 
-To further enhance the performance of the model, we are currently integrating Intel's **OpenVINO™ Toolkit**. OpenVINO allows us to optimize and accelerate TensorFlow models, especially on Intel hardware (CPUs, integrated GPUs, VPUs, and FPGAs).
+To further enhance the performance of the model, I am currently trying to integrate Intel's **OpenVINO™ Toolkit**. OpenVINO allows us to optimize and accelerate TensorFlow models, especially on Intel hardware (CPUs, integrated GPUs, VPUs, and FPGAs).
 
 ### Why OpenVINO?
 

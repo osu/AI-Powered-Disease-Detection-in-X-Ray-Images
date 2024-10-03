@@ -23,8 +23,9 @@ This project leverages deep learning techniques, particularly Convolutional Neur
 4. [Usage](#usage)
 5. [Training and Evaluation](#training-and-evaluation)
 6. [Results](#results)
-7. [Contributing](#contributing)
-8. [License](#license)
+7. [OpenVINO](#optimizing-tensorflow-models-with-openvino)
+8. [Contributing](#contributing)
+9. [License](#license)
 
 ---
 
@@ -137,6 +138,69 @@ After training, the model achieved the following performance metrics on the test
 - **AUC**: 0.95
 
 Sample results (X-ray images and predictions) are saved in the `results/` folder for visual inspection.
+
+## Optimizing TensorFlow Models with OpenVINO
+
+To further enhance the performance of the model, we are currently integrating Intel's **OpenVINO™ Toolkit**. OpenVINO allows us to optimize and accelerate TensorFlow models, especially on Intel hardware (CPUs, integrated GPUs, VPUs, and FPGAs).
+
+### Why OpenVINO?
+
+- **Faster Inference**: OpenVINO accelerates inference performance by optimizing TensorFlow models for Intel hardware.
+- **Reduced Latency**: It reduces model latency, making predictions faster.
+- **Ease of Use**: OpenVINO works seamlessly with TensorFlow, converting trained models and providing a simple API for optimized inference.
+
+### Installation of OpenVINO
+
+To install the OpenVINO toolkit, follow the steps below:
+
+1. Install OpenVINO Toolkit:
+
+   ```bash
+   pip install openvino-dev[tensorflow2]
+   ```
+
+2. Set up the OpenVINO environment (on Linux or MacOS):
+
+   ```bash
+   source /opt/intel/openvino/bin/setupvars.sh
+   ```
+
+   On Windows, use the **Command Prompt** or **PowerShell** to run the `setupvars.bat` file:
+
+   ```bash
+   "C:\Program Files (x86)\Intel\openvino\bin\setupvars.bat"
+   ```
+
+3. Convert the TensorFlow model to an OpenVINO IR format:
+
+   ```bash
+   mo --input_model model.pb --framework tf --data_type FP16 --output_dir optimized_model
+   ```
+
+   This converts the TensorFlow model into an Intermediate Representation (IR) that OpenVINO can run efficiently.
+
+4. Load and run the model using OpenVINO Inference Engine:
+
+   ```python
+   from openvino.runtime import Core
+
+   core = Core()
+   model = core.read_model(model="optimized_model/model.xml")
+   compiled_model = core.compile_model(model, "CPU")
+
+   # Run inference
+   output = compiled_model([input_image])
+   ```
+
+### Performance Gains
+
+By using OpenVINO, you can expect a significant improvement in inference times, especially when running on Intel CPUs. This allows the model to make predictions faster, enabling near real-time diagnostics in healthcare applications.
+
+---
+
+### Future Plans
+
+The integration of OpenVINO is currently in progress, and upcoming updates will provide benchmark results comparing TensorFlow's native performance with OpenVINO-optimized performance on Intel hardware.
 
 ---
 

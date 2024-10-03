@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project leverages deep learning techniques, particularly Convolutional Neural Networks (CNNs), to detect diseases in X-ray images. With a focus on improving medical diagnostics, the project provides a framework for training and evaluating models to identify conditions like pneumonia from medical imaging. The model aims to assist healthcare professionals in early disease detection and enhance diagnostic accuracy.
+This project leverages deep learning techniques, particularly Convolutional Neural Networks (CNNs), to detect diseases in X-ray images. With a focus on improving medical diagnostics, the project provides a framework for training and evaluating models to identify conditions like pneumonia from medical imaging. The model aims to assist healthcare professionals in early disease detection and enhance diagnostic accuracy. Made in 2022-2023
 
 ---
 
